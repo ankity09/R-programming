@@ -19,17 +19,18 @@ train.data <- data.frame(voter.data[Train,])
 test.data <- data.frame(voter.data[-Train,])
 ```
 
-```{r}
+```{r Boxplots for AGE/INCOME vs PREFERENCE}
 #Construct boxplots of INCOME and AGE (broken up by values of PREFERENCE). Present the plot as Exhibit A. What do you observe?
+
 ggplot(train.data, aes(x= factor(PREFERENCE), y = AGE)) + geom_boxplot(aes(fill=factor(PREFERENCE))) + scale_fill_manual(values=c("#4286f4", "#b71c0b")) + xlab("PREFERENCE") + ylab("AGE") + ggtitle("Exhibit A - AGE vs PREFERENCE")
 ggplot(train.data, aes(x= factor(PREFERENCE), y = INCOME)) + geom_boxplot(aes(fill=factor(PREFERENCE))) + scale_fill_manual(values=c("#4286f4", "#b71c0b")) + xlab("PREFERENCE") + ylab("INCOME") + ggtitle("Exhibit A - INCOME vs PREFERENCE")
 ```
 
 ```{r}
+
 (table.preferences <- table(train.data$PREFERENCE))
 prop.table(table.preferences)
 (table.preferences.gender <- table(train.data$GENDER,train.data$PREFERENCE))
-
 ```
 
 ```{r}
