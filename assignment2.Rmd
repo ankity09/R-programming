@@ -3,11 +3,7 @@ title: "Assignment 2"
 output: word_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
+```{r Getting and Setting Data}
 library(ggplot2)
 voter.data <- read.csv("/Users/ankityadav/Desktop/Spring_2019/DMPA/Assignments/Assignment 2/VoterPref.csv")
 voter.data$PREFERENCE <- factor(voter.data$PREFERENCE, levels = c('For','Against'))
@@ -15,13 +11,14 @@ voter.data$PREFERENCE <- as.numeric(voter.data$PREFERENCE)-1 # As values are fac
 tail(voter.data)
 ```
 
-```{r}
+```{r Dividing Data into Train and Test}
 set.seed(71923)
 Train <- sample(nrow(voter.data), 0.7*nrow(voter.data))
 train.data <- data.frame(voter.data[Train,])
 test.data <- data.frame(voter.data[-Train,])
 ```
 
+###a.	Construct boxplots of INCOME and AGE (broken up by values of PREFERENCE). Present the plot as Exhibit A. What do you observe?
 ```{r}
 ggplot(train.data, aes(x= factor(PREFERENCE), y = AGE)) + geom_boxplot(aes(fill=factor(PREFERENCE))) + scale_fill_manual(values=c("#4286f4", "#b71c0b")) + xlab("PREFERENCE") + ylab("AGE") + ggtitle("Exhibit A - AGE vs PREFERENCE")
 ggplot(train.data, aes(x= factor(PREFERENCE), y = INCOME)) + geom_boxplot(aes(fill=factor(PREFERENCE))) + scale_fill_manual(values=c("#4286f4", "#b71c0b")) + xlab("PREFERENCE") + ylab("INCOME") + ggtitle("Exhibit A - INCOME vs PREFERENCE")
