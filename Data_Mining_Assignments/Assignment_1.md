@@ -110,5 +110,5 @@ numeric.data <- airline.data[c(5,9,10,11,12,13,16,17,18)]
 ```R
 pairs(numeric.data)
 ```
-~[alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment1_2_a.png)
+![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment1_2_a.png)
 
