@@ -113,3 +113,18 @@ pairs(numeric.data)
 ```
 ![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment_Images/Assignment1_2_a.png)
 
+**b) Present a scatterplot of FARE (Y-axis) and DISTANCE (X-axis). Use different colors or symbols to distinguish routes where Southwest is present. Briefly describe what you observe.**
+
+```R
+library(ggplot2)
+ggplot(data = airline.data) +
+aes(x = DISTANCE, y = FARE, color = SW) + geom_point() +
+theme_minimal()
+## Warning: Removed 4 rows containing missing values (geom_point).
+```
+![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment_Images/Assignement1_2_b.png)
+
+The green dots(SW=Yes), are more clustered on the bottom left of the graph, which suggests SouthWest operates more on the shorter distances
+
+As the green dots(SW=Yes) suggest, fares are lower with respect to distance when compared to routes not served by Southwest
+Fare decreases, if the route has Southwest serving it.
