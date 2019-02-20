@@ -155,3 +155,207 @@ airline.data.PAX              0.28168371         0.31902519           -0.1028586
 ```
 
 **Correlation between DISTANCE and COUPON is higher than 0,7(0.7459)**
+
+## 3)More Regression Modelling
+
+**Run a simple regression to determine the effect of the presence of Southwest on FARE. Compare the coefficient with the corresponding value in (1) and explain discrepancies, if any.**
+
+In the simple Linear Model(linear.model.2) at (-92.00). We can infer, if Southwest flies on the route, then the fares will decrease by $92.00.
+The coefficient of Southwest(-45.77) in Linear Model(linear.model.1). Which tells us, if Southwest flies on the route, then fares will decrease by $45.77.
+Linear Model(linear.model.1) is a better model, as it has an Adjusted R-Squared value of 0.786 and will predict the coefficient of Southwest better. It is also important to note that, Linear Model (linear.model.1) has more independent variables and hence will be able to better predict FARES than this linear model(liner.model.2)
+
+```R
+linear.model.2 <- lm(FARE ~ SW, airline.data) summary(linear.model.2)
+##
+## Call:
+## lm(formula = FARE ~ SW, data = airline.data)
+##
+## Residuals:
+##     Min      1Q  Median      3Q     Max
+## -132.24  -46.12  -14.05   42.11  212.16
+##
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  189.862      3.069   61.86
+## SWYes        -92.007      5.524  -16.66
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01
+##
+  <2e-16 ***
+  <2e-16 ***
+'*' 0.05 '.' 0.1 ' ' 1
+## Residual standard error: 63.8 on 623 degrees of freedom
+## (2 observations deleted due to missingness)
+## Multiple R-squared: 0.3081, Adjusted R-squared: 0.307
+## F-statistic: 277.5 on 1 and 623 DF, p-value: < 2.2e-16
+```
+
+## 4)Further Analysis
+
+**a) A senior consultant in the airline industry has indicated that the presence of Southwest on Vacation routes has been driving prices down on these legs. Add this domain knowledge to your regression model and run a new multivariable linear regression. Describe how you added this feature to the model.**
+
+We can add this feature in our existing Linear Model, by introducing Interaction Variables in the equation. We will set Southwest and Vacation as our interaction variables in the equation and run the new linear model which will tell us how the presence of Southwest on Vacation routes affects the prices.
+
+```R
+linear.model.3 <- lm(FARE ~ VACATION + GATE + SW + SLOT + COUPON + NEW + HI + S_POP + E_P OP + DISTANCE + PAX + S_INCOME + E_INCOME + SW*VACATION, airline.data) summary(linear.model.3)
+##
+## Call:
+## lm(formula = FARE ~ VACATION + GATE + SW + SLOT + COUPON + NEW +
+## HI + S_POP + E_POP + DISTANCE + PAX + S_INCOME + E_INCOME +
+##     SW * VACATION, data = airline.data)
+##
+## Residuals:
+##      Min       1Q   Median       3Q      Max
+## -111.330  -19.565   -0.309   21.723  124.047
+##
+## Coefficients:
+##                     Estimate Std. Error t value Pr(>|t|)
+## (Intercept) 3.869e+01 2.806e+01 1.379 0.168480
+## VACATIONYes -5.273e+01 4.446e+00 -11.860 < 2e-16 ***
+## GATEFree -2.006e+01 3.870e+00 -5.183 2.97e-07 ***
+## SWYes -5.763e+01 4.214e+00 -13.675 < 2e-16 ***
+## SLOTFree -1.464e+01 3.741e+00 -3.913 0.000101 ***
+## COUPON -8.006e+00 1.195e+01 -0.670 0.503272
+## NEW -1.071e+00 1.823e+00 -0.588 0.556841
+## HI                 7.706e-03  9.621e-04   8.010 5.88e-15 ***
+## S_POP 3.627e-06 6.300e-07 5.758 1.35e-08 ***
+## E_POP 4.129e-06 7.286e-07 5.667 2.24e-08 ***
+## DISTANCE 7.752e-02 3.510e-03 22.090 < 2e-16 ***
+## PAX -9.227e-04 1.410e-04 -6.545 1.27e-10 ***
+## S_INCOME 8.742e-04 5.096e-04 1.716 0.086756 .
+## E_INCOME 1.331e-03 4.003e-04 3.324 0.000939 ***
+## VACATIONYes:SWYes 5.257e+01 6.882e+00 7.639 8.54e-14 ***
+## ---
+## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##
+## Residual standard error: 33.9 on 608 degrees of freedom
+## (4 observations deleted due to missingness)
+## Multiple R-squared: 0.8092, Adjusted R-squared: 0.8048
+## F-statistic: 184.2 on 14 and 608 DF, p-value: < 2.2e-16
+```
+
+**b) What is the resulting R2?**
+The resulting R2 is 0.8048
+
+**c) Now how would you quantify the effect of SW on the fare?**
+
+If SW is “Yes”, and VACATION is “No” the FARE will decrease by $57.63 while all other variables are held constant.
+If SW is “Yes”, and VACATION is “Yes” the FARE will decrease by $57.79 while all other variables are held constant. Calculation for above value (Coef (VACATIONYes) + Coef(SWYes) - Coef (VACATIONYes:SWYes)). = (52.73+57.63-52.57)
+
+## 5) Comparing two different models
+
+We will now build a model for FARES using the following explanatory variables: Factor variables for VACATION and SW, HI, S_INCOME, E_INCOME, S_POP, E_POP, DISTANCE, PAX. Then we will compare this with the model without the two INCOME variables.
+a) Run the regression with and without the INCOME variables.
+
+```R
+linear.model.4 <- lm(FARE ~ VACATION + SW + HI + S_INCOME + E_INCOME + S_POP + E_POP + DISTANCE + PAX, airline.data)
+linear.model.5 <- lm(FARE ~ VACATION + SW + HI + S_POP + E_POP + DISTANCE + PAX, airli ne.data)
+```
+
+**b) On the basis of the output evaluate which model is better for predicting FARES. Explain carefully how you made this determination.**
+
+WITH INCOME – linear.model.4 WITHOUT INOMCE – linear.model.5
+The Linear Model(linear.model.4) with the INCOME variables is better for predicting FARES.
+It has an Adjusted R-Squared value of 0.7762 compared to that of Linear Model(linear.model.5) which has an R-Squared value of 0.7662.
+The Linear Model(linear.model.4) also has an Residual standard error of 36.3 which is lower than Linear Model(linear.model.5)’s Residual standard error 37.11.As per the above values, Linear Model(linear.model.4) is a better model for predicting FARE.
+ 
+```R
+ summary(linear.model.4)
+##
+## Call:
+## lm(formula = FARE
+##     S_POP + E_POP
+##
+## Residuals:
+##      Min       1Q
+## -124.916  -22.787    0.426   22.711  117.819
+##
+## Coefficients:
+##
+## (Intercept)
+## VACATIONYes
+## SWYes ## HI
+## S_INCOME
+## E_INCOME
+## S_POP
+## E_POP
+## DISTANCE
+## PAX ## ---
+## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 ##
+## Residual standard error: 36.3 on 613 degrees of freedom
+## (4 observations deleted due to missingness)
+## Multiple R-squared: 0.7795, Adjusted R-squared: 0.7762
+               -1.013e-03  1.395e-04
+## F-statistic: 240.7 on 9 and 613 DF, summary(linear.model.5)
+p-value: < 2.2e-16
+~ VACATION + SW +
++ DISTANCE + PAX,
+Median 3Q
+HI + S_INCOME + E_INCOME +
+data = airline.data)
+Estimate Std. Error t value Pr(>|t|)
+                     -2.498 0.012764 *
+-5.134e+01  2.056e+01
+-3.262e+01  3.856e+00
+-4.676e+01  3.692e+00
+ -8.459  < 2e-16 ***
+-12.666  < 2e-16 ***
+  8.166 1.82e-15 ***
+  3.507 0.000486 ***
+  4.687 3.42e-06 ***
+  7.181 2.01e-12 ***
+  7.594 1.16e-13 ***
+ 27.746  < 2e-16 ***
+ -7.261 1.17e-12 ***
+7.863e-03  9.629e-04
+1.848e-03  5.269e-04
+1.950e-03  4.160e-04
+4.605e-06  6.413e-07
+5.579e-06  7.346e-07
+7.176e-02  2.586e-03
+##
+## Call:
+## lm(formula = FARE ~ VACATION + SW +
+##     PAX, data = airline.data)
+##
+## Residuals:
+##      Min       1Q   Median       3Q
+## -115.712  -23.015   -1.116   23.935  113.970
+##
+## Coefficients:
+##
+## (Intercept)
+## VACATIONYes
+## SWYes ## HI
+## S_POP
+## E_POP
+## DISTANCE
+## PAX
+Estimate Std. Error t value Pr(>|t|)
+ 4.537e+01  8.188e+00
+-3.825e+01  3.770e+00
+-5.341e+01  3.498e+00
+  5.540 4.48e-08 ***
+-10.148  < 2e-16 ***
+-15.272  < 2e-16 ***
+8.731e-03  9.651e-04   9.046  < 2e-16 ***
+4.827e-06  6.205e-07
+5.837e-06  6.929e-07
+7.476e-02  2.569e-03
+7.779 3.11e-14 ***
+-7.808e-04  1.357e-04
+ 8.423 2.59e-16 ***
+29.098  < 2e-16 ***
+-5.754 1.38e-08 ***
+Max
+HI + S_POP + E_POP
+Max
++ DISTANCE +
+
+## ---
+## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 ##
+## Residual standard error: 37.11 on 615 degrees of freedom
+## (4 observations deleted due to missingness)
+## Multiple R-squared: 0.7689, Adjusted R-squared: 0.7662
+## F-statistic: 292.2 on 7 and 615 DF, p-value: < 2.2e-16
+```
