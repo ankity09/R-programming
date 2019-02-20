@@ -30,7 +30,7 @@ We will not use the first four attributes (S_CODE, S_CITY, E_CODE, and E_CITY) i
 Please answer all questions in the dedicated space and upload on Canvas. Please ensure that your numbering of questions matches those below.
 
 
-**1) Working with data and regression in R**
+##1) Working with data and regression in R
 The VACATION, SW, GATE and SLOT variables will have type Factor. The dollar sign before FARE is likely to create a problem – you may choose to address this in R, or directly in Excel by changing the format from currency to number. Using the resulting new dataset run a multivariable regression for FARE, with all numerical variables (i.e. of type num or int) and the four factors above as independent variables.
 
 ```R
@@ -98,3 +98,7 @@ The predicted FARE for the leg with the above variables will be $143.47
 **d) Do you have any reservations about your predicted fare? If so, explain why.**
 
 The input values of S_INCOME and E_INCOME are extremely small as compared to the values in the data set. Hence our model is predicting fare by extrapolating and hence chances of errors is very high. Predictions may not be very reliable.
+
+
+##2) Exploratory Analysis
+
