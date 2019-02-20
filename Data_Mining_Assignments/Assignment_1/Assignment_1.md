@@ -261,101 +261,58 @@ The Linear Model(linear.model.4) also has an Residual standard error of 36.3 whi
  
 ```R
  summary(linear.model.4)
-##
-## Call:
-## lm(formula = FARE
-##     S_POP + E_POP
-##
-## Residuals:
-##      Min       1Q
-## -124.916  -22.787    0.426   22.711  117.819
-##
-## Coefficients:
-##
-## (Intercept)
-## VACATIONYes
-## SWYes ## HI
-## S_INCOME
-## E_INCOME
-## S_POP
-## E_POP
-## DISTANCE
-## PAX ## ---
-## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 ##
-## Residual standard error: 36.3 on 613 degrees of freedom
-## (4 observations deleted due to missingness)
-## Multiple R-squared: 0.7795, Adjusted R-squared: 0.7762
-               -1.013e-03  1.395e-04
-## F-statistic: 240.7 on 9 and 613 DF, summary(linear.model.5)
-p-value: < 2.2e-16
-~ VACATION + SW +
-+ DISTANCE + PAX,
-Median 3Q
-HI + S_INCOME + E_INCOME +
-data = airline.data)
-Estimate Std. Error t value Pr(>|t|)
-                     -2.498 0.012764 *
--5.134e+01  2.056e+01
--3.262e+01  3.856e+00
--4.676e+01  3.692e+00
- -8.459  < 2e-16 ***
--12.666  < 2e-16 ***
-  8.166 1.82e-15 ***
-  3.507 0.000486 ***
-  4.687 3.42e-06 ***
-  7.181 2.01e-12 ***
-  7.594 1.16e-13 ***
- 27.746  < 2e-16 ***
- -7.261 1.17e-12 ***
-7.863e-03  9.629e-04
-1.848e-03  5.269e-04
-1.950e-03  4.160e-04
-4.605e-06  6.413e-07
-5.579e-06  7.346e-07
-7.176e-02  2.586e-03
-##
-## Call:
-## lm(formula = FARE ~ VACATION + SW +
-##     PAX, data = airline.data)
-##
-## Residuals:
-##      Min       1Q   Median       3Q
-## -115.712  -23.015   -1.116   23.935  113.970
-##
-## Coefficients:
-##
-## (Intercept)
-## VACATIONYes
-## SWYes ## HI
-## S_POP
-## E_POP
-## DISTANCE
-## PAX
-Estimate Std. Error t value Pr(>|t|)
- 4.537e+01  8.188e+00
--3.825e+01  3.770e+00
--5.341e+01  3.498e+00
-  5.540 4.48e-08 ***
--10.148  < 2e-16 ***
--15.272  < 2e-16 ***
-8.731e-03  9.651e-04   9.046  < 2e-16 ***
-4.827e-06  6.205e-07
-5.837e-06  6.929e-07
-7.476e-02  2.569e-03
-7.779 3.11e-14 ***
--7.808e-04  1.357e-04
- 8.423 2.59e-16 ***
-29.098  < 2e-16 ***
--5.754 1.38e-08 ***
-Max
-HI + S_POP + E_POP
-Max
-+ DISTANCE +
+Call:
+lm(formula = FARE ~ VACATION + SW + HI + S_INCOME + E_INCOME + 
+    S_POP + E_POP + DISTANCE + PAX, data = airline.data)
 
-## ---
-## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 ##
-## Residual standard error: 37.11 on 615 degrees of freedom
-## (4 observations deleted due to missingness)
-## Multiple R-squared: 0.7689, Adjusted R-squared: 0.7662
-## F-statistic: 292.2 on 7 and 615 DF, p-value: < 2.2e-16
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-124.916  -22.787    0.426   22.711  117.819 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -5.134e+01  2.056e+01  -2.498 0.012764 *  
+VACATIONYes -3.262e+01  3.856e+00  -8.459  < 2e-16 ***
+SWYes       -4.676e+01  3.692e+00 -12.666  < 2e-16 ***
+HI           7.863e-03  9.629e-04   8.166 1.82e-15 ***
+S_INCOME     1.848e-03  5.269e-04   3.507 0.000486 ***
+E_INCOME     1.950e-03  4.160e-04   4.687 3.42e-06 ***
+S_POP        4.605e-06  6.413e-07   7.181 2.01e-12 ***
+E_POP        5.579e-06  7.346e-07   7.594 1.16e-13 ***
+DISTANCE     7.176e-02  2.586e-03  27.746  < 2e-16 ***
+PAX         -1.013e-03  1.395e-04  -7.261 1.17e-12 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 36.3 on 613 degrees of freedom
+  (4 observations deleted due to missingness)
+Multiple R-squared:  0.7795,	Adjusted R-squared:  0.7762 
+F-statistic: 240.7 on 9 and 613 DF,  p-value: < 2.2e-16
+
+summary(linear.model.4)
+Call:
+lm(formula = FARE ~ VACATION + SW + HI + S_POP + E_POP + DISTANCE + 
+    PAX, data = airline.data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-115.712  -23.015   -1.116   23.935  113.970 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  4.537e+01  8.188e+00   5.540 4.48e-08 ***
+VACATIONYes -3.825e+01  3.770e+00 -10.148  < 2e-16 ***
+SWYes       -5.341e+01  3.498e+00 -15.272  < 2e-16 ***
+HI           8.731e-03  9.651e-04   9.046  < 2e-16 ***
+S_POP        4.827e-06  6.205e-07   7.779 3.11e-14 ***
+E_POP        5.837e-06  6.929e-07   8.423 2.59e-16 ***
+DISTANCE     7.476e-02  2.569e-03  29.098  < 2e-16 ***
+PAX         -7.808e-04  1.357e-04  -5.754 1.38e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 37.11 on 615 degrees of freedom
+  (4 observations deleted due to missingness)
+Multiple R-squared:  0.7689,	Adjusted R-squared:  0.7662 
+F-statistic: 292.2 on 7 and 615 DF,  p-value: < 2.2e-16
 ```
