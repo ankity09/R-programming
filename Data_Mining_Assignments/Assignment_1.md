@@ -102,3 +102,14 @@ The input values of S_INCOME and E_INCOME are extremely small as compared to the
 
 ## 2) Exploratory Analysis
 
+```R
+numeric.data <- airline.data[c(5,9,10,11,12,13,16,17,18)]
+```
+**a) Use the PAIRS function in R to depict pairwise scatterplots of all numerical variables in the data set.**
+
+```R
+pairs(numeric.data)
+```
+~[Image for Pairs Data]
+https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment1_2_a.png
+
