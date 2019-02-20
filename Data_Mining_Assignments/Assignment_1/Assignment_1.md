@@ -102,3 +102,4 @@ The input values of S_INCOME and E_INCOME are extremely small as compared to the
 
 ## 2) Exploratory Analysis
 
+![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment_Images/Assignment1_2_a.png)
