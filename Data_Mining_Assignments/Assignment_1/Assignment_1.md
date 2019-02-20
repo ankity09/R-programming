@@ -128,3 +128,30 @@ The green dots(SW=Yes), are more clustered on the bottom left of the graph, whic
 
 As the green dots(SW=Yes) suggest, fares are lower with respect to distance when compared to routes not served by Southwest
 Fare decreases, if the route has Southwest serving it.
+
+**c) High correlations between independent variables can be problematic. Present a table of linear correlations and identify any values greater than 0.7.**
+
+```R
+cor.data <- cor(numeric.data, use = "complete.obs")
+print(cor.data)
+                     airline.data.COUPON airline.data.HI airline.data.S_INCOME airline.data.E_INCOME
+airline.data.COUPON            1.00000000     -0.35063532           -0.09234955            0.05169139
+airline.data.HI               -0.35063532      1.00000000           -0.01522888            0.09567214
+airline.data.S_INCOME         -0.09234955     -0.01522888            1.00000000           -0.17437258
+airline.data.E_INCOME          0.05169139      0.09567214           -0.17437258            1.00000000
+airline.data.S_POP            -0.10834075     -0.16002891            0.51347744           -0.16756233
+airline.data.E_POP             0.09924225     -0.07157575           -0.26222300            0.51061293
+airline.data.DISTANCE          0.74790923     -0.31100919            0.02459152            0.18545503
+airline.data.PAX              -0.33343861     -0.16397826            0.13522296            0.26939217
+                      airline.data.S_POP airline.data.E_POP airline.data.DISTANCE airline.data.PAX
+airline.data.COUPON          -0.10834075         0.09924225            0.74790923       -0.3334386
+airline.data.HI              -0.16002891        -0.07157575           -0.31100919       -0.1639783
+airline.data.S_INCOME         0.51347744        -0.26222300            0.02459152        0.1352230
+airline.data.E_INCOME        -0.16756233         0.51061293            0.18545503        0.2693922
+airline.data.S_POP            1.00000000        -0.27502675            0.01460752        0.2816837
+airline.data.E_POP           -0.27502675         1.00000000            0.11935084        0.3190252
+airline.data.DISTANCE         0.01460752         0.11935084            1.00000000       -0.1028586
+airline.data.PAX              0.28168371         0.31902519           -0.10285862        1.0000000
+```
+
+**Correlation between DISTANCE and COUPON is higher than 0,7(0.7459)**
