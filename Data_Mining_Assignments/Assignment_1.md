@@ -74,3 +74,27 @@ summary(linear.model.1)
 ## Multiple R-squared: 0.7909, Adjusted R-squared: 0.7865
 ## F-statistic: 177.2 on 13 and 609 DF, p-value: < 2.2e-16
 ```
+
+**a) What is the resulting R2? **
+
+The Resulting R2 is 0.786.
+
+**b) State precisely what effect the value of SLOT has on the predicted FARE:**
+
+If SLOT is “Free”, the FARE will decrease by $14.97 while all other variables are held constant.
+
+**c) What is the predicted fare of a leg that has COUPON = 1, NEW = 3, VACATION = No, SW = No, HI =6000, S_INCOME = $2000, E_INCOME = $2000, S_POP = 4,000,000, E_POP=7,150,000, SLOT=Free and GATE = Constrained, DISTANCE = 1000, and PAX = 6000?**
+  
+```R
+linear.model.2 <- lm(FARE ~ VACATION + GATE + SW + SLOT + COUPON + NEW + HI + S_POP + E_POP + DISTANCE + PAX + S_INCOME + E_INCOME, airline.data)
+test.data <- data.frame(VACATION = 'No', GATE = 'Constrained', SW = 'No', SLOT = 'Free ', COUPON = 1, NEW = 3, HI = 6000, S_POP = 4000000, E_POP = 7150000, DISTANCE = 1000, PAX = 6000, S_INCOME = 2000, E_INCOME = 2000)
+predict.test <- predict(linear.model.2,test.data) print(predict.test)
+
+## 1
+## 143.4773
+```
+The predicted FARE for the leg with the above variables will be $143.47
+
+**d) Do you have any reservations about your predicted fare? If so, explain why.**
+
+The input values of S_INCOME and E_INCOME are extremely small as compared to the values in the data set. Hence our model is predicting fare by extrapolating and hence chances of errors is very high. Predictions may not be very reliable.
