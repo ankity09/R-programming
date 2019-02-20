@@ -75,7 +75,7 @@ summary(linear.model.1)
 ## F-statistic: 177.2 on 13 and 609 DF, p-value: < 2.2e-16
 ```
 
-**a) What is the resulting R2? **
+**a) What is the resulting R2?**
 
 The Resulting R2 is 0.786.
 
