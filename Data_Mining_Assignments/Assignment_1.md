@@ -31,39 +31,8 @@ Please answer all questions in the dedicated space and upload on Canvas. Please 
 **1) Working with data and regression in R**
 The VACATION, SW, GATE and SLOT variables will have type Factor. The dollar sign before FARE is likely to create a problem – you may choose to address this in R, or directly in Excel by changing the format from currency to number. Using the resulting new dataset run a multivariable regression for FARE, with all numerical variables (i.e. of type num or int) and the four factors above as independent variables.
 
+```R
 airline.data <- read.csv("/Users/ankityadav/Desktop/Spring_2019/DMPA/Assignments/Assignme nt 1/Airline Data V2.csv")
 linear.model.1 <- lm(FARE ~ VACATION + GATE + SW + SLOT + COUPON + NEW + HI + S_POP + E_P OP + DISTANCE + PAX + S_INCOME + E_INCOME, airline.data)
 summary(linear.model.1)
-##
-## Call:
-## lm(formula = FARE ~ VACATION + GATE + SW + SLOT + COUPON + NEW +
-## HI + S_POP + E_POP + DISTANCE + PAX + S_INCOME + E_INCOME,
-##     data = airline.data)
-##
-## Residuals:
-##      Min       1Q   Median       3Q      Max
-## -110.795  -23.089   -1.085   20.955  128.678
-##
-## Coefficients:
-##               Estimate Std. Error t value Pr(>|t|)
-## (Intercept) -9.175e+00 2.861e+01 -0.321 0.748572
-## VACATIONYes -3.293e+01 3.779e+00 -8.714 < 2e-16 ***
-## GATEFree -2.052e+01 4.048e+00 -5.069 5.31e-07 ***
-## SWYes -4.090e+01 3.767e+00 -10.860 < 2e-16 ***
-## SLOTFree -1.497e+01 3.913e+00 -3.824 0.000145 ***
-## COUPON 6.721e+00 1.234e+01 0.545 0.586215
-## NEW -2.384e+00 1.898e+00 -1.256 0.209629
-## HI           8.140e-03  1.005e-03   8.103 2.95e-15 ***
-## S_POP 3.613e-06 6.590e-07 5.482 6.17e-08 ***
-## E_POP 4.204e-06 7.621e-07 5.517 5.11e-08 ***
-## DISTANCE 7.359e-02 3.631e-03 20.265 < 2e-16 ***
-## PAX -9.179e-04 1.475e-04 -6.225 8.98e-10 ***
-## S_INCOME 1.485e-03 5.264e-04 2.820 0.004954 **
-## E_INCOME 1.824e-03 4.132e-04 4.415 1.20e-05 ***
-## ---
-## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-##
-## Residual standard error: 35.47 on 609 degrees of freedom
-## (4 observations deleted due to missingness)
-## Multiple R-squared: 0.7909, Adjusted R-squared: 0.7865
-## F-statistic: 177.2 on 13 and 609 DF, p-value: < 2.2e-16
+```
