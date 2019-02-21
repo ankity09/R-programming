@@ -73,3 +73,27 @@ ggplot(train.data, aes(x= factor(PREFERENCE), y = INCOME)) + geom_boxplot(aes(fi
 ![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment_Images/Assignment2_2_a1.png)
 
 From the above Boxplot(Exhibit A – INCOME vs PREFERENCE) we can observe that, voters who voted FOR the proposal have an higher INCOME, this can be seen from the Blue Boxplot above, which has a higher range and median value of $82,360. Voters with a higher INCOME want the state sales tax to increase.
+
+**b. Construct a table for PREFERENCE showing proportions for and against.**
+
+```R
+(table.preferences <- table(train.data$PREFERENCE))
+##
+##   0   1
+## 569 131
+prop.table(table.preferences)
+ ##
+ ## 0 1
+ ## 0.8128571 0.1871429
+```
+
+There are 569 voters who voted FOR the proposition and 131 who voted AGAINST it, or 0.8128571 (81.28%) voted FOR and 0.1871429 (18.71%) voted AGAINST the proposition.
+
+**c. Construct a two-way table for count of PREFERENCE broken up by GENDER (i.e. what are the numbers of men and women who are for and against the proposition).**
+
+```R
+(table.preferences.gender <- table(train.data$GENDER,train.data$PREFERENCE))
+##
+## 01 ## F27676 ## M29355
+```
+For Females, 276 have voted FOR and 76 have voted AGAINST the proposal. For Males, the count is 293 who voted for FOR and 55 who voted AGAINST the proposition.
