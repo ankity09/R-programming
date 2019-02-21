@@ -58,7 +58,7 @@ Exhibit A. What do you observe?**
 ```R
 ggplot(train.data, aes(x= factor(PREFERENCE), y = AGE)) + geom_boxplot(aes(fill=factor (PREFERENCE))) + scale_fill_manual(values=c("#4286f4", "#b71c0b")) + xlab("PREFERENCE" ) + ylab("AGE")
 ```
-##Exhibit A - AGE VS PREFERENCE
+**Exhibit A - AGE VS PREFERENCE**
 
 ![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment_Images/Assignment2_2_a.png)
 
@@ -68,7 +68,8 @@ From the above Boxplot(Exhibit A – AGE vs PREFERENCE) we can observe that, vot
 ggplot(train.data, aes(x= factor(PREFERENCE), y = INCOME)) + geom_boxplot(aes(fill= factor(PREFERENCE))) + scale_fill_manual(values=c("#4286f4", "#b71c0b")) + xlab("PR EFERENCE") + ylab("INCOME")
 ```
 
-##Exhibit A - INCOME VS PREFERENCE
+**Exhibit A - INCOME VS PREFERENCE**
+
 ![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment_Images/Assignment2_2_a1.png)
 
 From the above Boxplot(Exhibit A – INCOME vs PREFERENCE) we can observe that, voters who voted FOR the proposal have an higher INCOME, this can be seen from the Blue Boxplot above, which has a higher range and median value of $82,360. Voters with a higher INCOME want the state sales tax to increase.
