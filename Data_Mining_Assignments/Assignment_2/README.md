@@ -11,6 +11,7 @@ Annual income in thousands of US dollars “M” or “F”
 The intent of the survey is to develop a strategy to target individuals for a marketing campaign designed to “get out the vote”.
 
 ##1 Data Preparation
+
 **a. Read the data set in R. For the PREFERENCE variable ensure that “Against” is the success class (i.e. the
 class with higher level – e.g. “1” for binary variable)**
 
