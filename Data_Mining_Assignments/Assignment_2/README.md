@@ -94,6 +94,9 @@ There are 569 voters who voted FOR the proposition and 131 who voted AGAINST it,
 ```R
 (table.preferences.gender <- table(train.data$GENDER,train.data$PREFERENCE))
 ##
-## 01 ## F27676 ## M29355
+     0   1
+  F 276  76
+  M 293  55
 ```
+
 For Females, 276 have voted FOR and 76 have voted AGAINST the proposal. For Males, the count is 293 who voted for FOR and 55 who voted AGAINST the proposition.
