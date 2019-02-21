@@ -35,3 +35,40 @@ F          1
 F          0
 ```
 
+**b. Set the seed to 71923**
+
+```R
+set.seed(71923)
+```
+
+**c. Randomly partition the data set into the training and test data sets. The proportion of observations in
+the training data set should be 70%. The remaining 30% of observations should be in the test data set.**
+
+```R
+ Train <- sample(nrow(voter.data), 0.7*nrow(voter.data))
+ train.data <- data.frame(voter.data[Train,])
+ test.data <- data.frame(voter.data[-Train,])
+```
+
+##(2) Exploratory analysis of the training data set
+
+**a. Construct boxplots of INCOME and AGE (broken up by values of PREFERENCE). Present the plot as
+Exhibit A. What do you observe?**
+
+```R
+ggplot(train.data, aes(x= factor(PREFERENCE), y = AGE)) + geom_boxplot(aes(fill=factor (PREFERENCE))) + scale_fill_manual(values=c("#4286f4", "#b71c0b")) + xlab("PREFERENCE" ) + ylab("AGE")
+```
+##Exhibit A - AGE VS PREFERENCE
+
+![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment_Images/Assignment2_2_a.png)
+
+From the above Boxplot(Exhibit A – AGE vs PREFERENCE) we can observe that, voters who voted AGAINST the proposal are older in AGE, this can be seen from the Red Boxplot above, which has a higher range and median value of 37. Older voters do not want the state sales tax to increase.
+
+```R
+ggplot(train.data, aes(x= factor(PREFERENCE), y = INCOME)) + geom_boxplot(aes(fill= factor(PREFERENCE))) + scale_fill_manual(values=c("#4286f4", "#b71c0b")) + xlab("PR EFERENCE") + ylab("INCOME")
+```
+
+##Exhibit A - INCOME VS PREFERENCE
+![alt_text](https://github.com/ankity09/R-programming/blob/master/Data_Mining_Assignments/Assignment_Images/Assignment2_2_a1.png)
+
+From the above Boxplot(Exhibit A – INCOME vs PREFERENCE) we can observe that, voters who voted FOR the proposal have an higher INCOME, this can be seen from the Blue Boxplot above, which has a higher range and median value of $82,360. Voters with a higher INCOME want the state sales tax to increase.
