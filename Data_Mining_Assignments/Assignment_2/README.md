@@ -10,7 +10,7 @@ Years of age at time of survey
 Annual income in thousands of US dollars “M” or “F”
 The intent of the survey is to develop a strategy to target individuals for a marketing campaign designed to “get out the vote”.
 
-## 1 Data Preparation
+## 1) Data Preparation
 
 **a. Read the data set in R. For the PREFERENCE variable ensure that “Against” is the success class (i.e. the
 class with higher level – e.g. “1” for binary variable)**
@@ -50,7 +50,7 @@ the training data set should be 70%. The remaining 30% of observations should be
  test.data <- data.frame(voter.data[-Train,])
 ```
 
-## 2 Exploratory analysis of the training data set
+## 2) Exploratory analysis of the training data set
 
 **a. Construct boxplots of INCOME and AGE (broken up by values of PREFERENCE). Present the plot as
 Exhibit A. What do you observe?**
@@ -101,7 +101,7 @@ There are 569 voters who voted FOR the proposition and 131 who voted AGAINST it,
 
 For Females, 276 have voted FOR and 76 have voted AGAINST the proposal. For Males, the count is 293 who voted for FOR and 55 who voted AGAINST the proposition.
 
-## 3 Run a linear regression model of PREFERENCE on the demographic variables. Use only the training data set for fitting the model.
+## 3) Run a linear regression model of PREFERENCE on the demographic variables. Use only the training data set for fitting the model.
 
 ```R
 #Function to compute errors AE, RMSE, MAE
@@ -190,7 +190,7 @@ For the test dataset, 0.9033333 or 90.3% of the predicted classes are voting FOR
 For the test dataset, 0.13 or 13% of the predictions are in error.
 
 
-## (4) Run a logistic regression model of PREFERENCE on the demographic variables. Use only the training data set for this.
+## 4) Run a logistic regression model of PREFERENCE on the demographic variables. Use only the training data set for this.
 
 **a. Present the output as Exhibit B.**
 
