@@ -65,7 +65,7 @@ abline(a = 0, b = 1, lty = 2,col="red")
 x <- performance(pred.train,"acc",x.measure = "cutoff")
 y <- performance(pred.test,"acc",x.measure = "cutoff")
 plot(x,col = "red", main = "Accuracy vs Cutoff")
-plot(y,col = "black")
+plot(y,col = "black", add = TRUE)
 
 
 ###########################
