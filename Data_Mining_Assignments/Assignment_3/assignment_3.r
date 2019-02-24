@@ -57,15 +57,16 @@ perf.train <- performance(pred.train, "tpr", "fpr" ) # ROC Curve
 
 pred.test <- prediction(predictprob.log.test, test.data$PREFERENCE) # Testing data
 perf.test <- performance( pred.test, "tpr", "fpr" ) # ROC Curve
-plot(perf.train ,col="blue")
+plot(perf.train ,col="blue", main = "ROC Curves")
 plot(perf.test,col="green",add = TRUE)
 abline(a = 0, b = 1, lty = 2,col="red")
-
+legend("bottomright", c("Train","Test"), lty = 1, col = c("blue","green"), bty="n")
 
 x <- performance(pred.train,"acc",x.measure = "cutoff")
 y <- performance(pred.test,"acc",x.measure = "cutoff")
 plot(x,col = "red", main = "Accuracy vs Cutoff")
 plot(y,col = "black", add = TRUE)
+legend("bottomright", c("Train","Test"), lty = 1, col = c("red","black"), bty="n")
 
 
 ###########################
