@@ -33,6 +33,7 @@ test.data$PREDICTED <- predictprob.log.test
 (table.train <- table(actual.train,predictclass.log.train))
 (table.test <- table(actual.test,predictclass.log.test))
 
+#Performance Metrics
 perfomrance.metrics <- function(x,y,z){
   metrics <- c('Accuracy','Sensitivity','Specificity','Error Rate', 'PPV','NP')
   acc <- sum(x == y)/nrow(z)
@@ -90,6 +91,7 @@ accuracy.data.test[which.max(accuracy.data.test$Accuracy),]
 accuracy.data.test
 
 ##############################################
+#Misclassification Cost
 misclass.cost.train <- data.frame(Cutoff = rep(0,10),Cost = rep(0,10))
 for (i in 1:10) {
   predict.class.train <- ifelse(predictprob.log.train>i/10,1,0)
@@ -112,9 +114,6 @@ misclass.cost.test[which.min(misclass.cost.test$Cost),]
 misclass.cost.test
 
 ########################################
-
-
-
 
 
 #Decile wise chart
