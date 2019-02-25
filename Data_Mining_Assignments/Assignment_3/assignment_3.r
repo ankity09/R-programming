@@ -27,8 +27,8 @@ actual.train <- train.data$PREFERENCE
 actual.test <- test.data$PREFERENCE
 predictclass.log.train <- ifelse(predictprob.log.train > 0.5, 1 , 0)
 predictclass.log.test <- ifelse(predictprob.log.test > 0.5, 1 , 0)
-train.data$PREDICTED <- predictclass.log.train
-test.data$PREDICTED <- predictclass.log.test
+train.data$PREDICTED <- predictprob.log.train
+test.data$PREDICTED <- predictprob.log.test
 
 (table.train <- table(actual.train,predictclass.log.train))
 (table.test <- table(actual.test,predictclass.log.test))
@@ -147,15 +147,15 @@ decile_Lift(test.data)  ## Validation
 
 
 #Lift Chart
-df1 <- data.frame(train.data$PREDICTED,train.data$PREFERENCE)
-df1S <- df1[order(-train.data$PREDICTED),]
+df1 <- data.frame(predictprob.log.train,train.data$PREFERENCE)
+df1S <- df1[order(-predictprob.log.train),]
 df1S$Gains <- cumsum(df1S$train.data.PREFERENCE)
 plot(df1S$Gains,type="n",main="Training Data Lift Chart",xlab="Number of Cases",ylab="Cumulative Success")
 lines(df1S$Gains)
 abline(0,sum(df1S$train.data.PREFERENCE)/nrow(df1S),lty = 2, col="red")
 
-df <- data.frame(test.data$PREDICTED,test.data$PREFERENCE)
-df2 <- df[order(-test.data$PREDICTED),]
+df <- data.frame(predictprob.log.test,test.data$PREFERENCE)
+df2 <- df[order(-predictprob.log.test),]
 df2$Gains <- cumsum(df2$test.data.PREFERENCE)
 plot(df2$Gains,type="n",main="Test Data Lift Chart",xlab="Number of Cases",ylab="Cumulative Success")
 lines(df2$Gains)
