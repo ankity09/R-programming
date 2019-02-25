@@ -113,6 +113,11 @@ for (i in 1:10) {
 misclass.cost.test[which.min(misclass.cost.test$Cost),]
 misclass.cost.test
 
+predict.class.test <- ifelse(predictprob.log.test>0.8,1,0)
+misclass.cost <- (sum(actual.test == 1 & predict.class.test == 0) * 1) + (sum(actual.test == 0 & predict.class.test == 1) * 4)
+misclass.cost.df <- data.frame(Cutoff = 0,Cost = 0)
+misclass.cost.df[,] <- c(0.8,misclass.cost)
+misclass.cost.df
 ########################################
 
 
